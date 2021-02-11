@@ -11,7 +11,9 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports"},
         features = "src/test/resources/features",
         glue = "com/ZeroOnlineBanking/step_definitions",
-        dryRun = false
+        dryRun = false,
+        tags = "@AccountActivity"
+
 
 
 

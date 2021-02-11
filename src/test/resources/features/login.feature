@@ -6,7 +6,7 @@ Feature: Automating login functionality
     Given I am on the Login page
 
   Scenario: As an authorized user I should be able to login
-    And I login with username "username" and password "password"
+    When I login with username "username" and password "password"
     Then the Account Summary page should be displayed
 
 

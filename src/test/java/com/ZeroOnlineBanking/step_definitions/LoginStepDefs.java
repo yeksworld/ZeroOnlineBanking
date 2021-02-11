@@ -7,9 +7,9 @@ import com.ZeroOnlineBanking.utilities.ConfigurationReader;
 import com.ZeroOnlineBanking.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 
-public class LoginStepsDef {
+
+public class LoginStepDefs {
 
     LoginPage loginPage = new LoginPage();
     DashboardMenuPage dashboardMenuPage = new DashboardMenuPage();

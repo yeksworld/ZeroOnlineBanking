@@ -12,4 +12,11 @@ Feature: Automating Account Summary Page
     When I click  the account summary button
     And Page should have the title "Zero - Account Summary"
     Then Account summary page should have the following account types: "Cash Accounts", "Investment Accounts", "Credit Accounts", "Loan Accounts"
+
+    #  | Cash Accounts       |
+    #  | Investment Accounts |
+    #  | Credit Accounts     |
+    #  | Loan Accounts       |
+
     And "Credit Accounts" table must have columns
+

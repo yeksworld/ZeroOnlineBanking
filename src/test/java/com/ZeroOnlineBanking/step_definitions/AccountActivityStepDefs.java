@@ -1,6 +1,9 @@
 package com.ZeroOnlineBanking.step_definitions;
 
+import com.ZeroOnlineBanking.pages.AccountActivityPage;
+import com.ZeroOnlineBanking.pages.AccountSummaryPage;
 import com.ZeroOnlineBanking.pages.DashboardMenuPage;
+import com.ZeroOnlineBanking.pages.OnlineBankingPage;
 import com.ZeroOnlineBanking.utilities.BrowserUtilities;
 import com.ZeroOnlineBanking.utilities.Driver;
 import io.cucumber.java.en.*;
@@ -14,23 +17,26 @@ import java.util.List;
 
 public class AccountActivityStepDefs {
     DashboardMenuPage dashboardMenuPage = new DashboardMenuPage();
+    OnlineBankingPage onlineBankingPage = new OnlineBankingPage();
+    AccountSummaryPage accountSummaryPage = new AccountSummaryPage();
+    AccountActivityPage accountActivityPage = new AccountActivityPage();
 
     @Given("I click the Account Activity button")
     public void I_click_the_Account_Activity_button() {
-        dashboardMenuPage.AccountActivity.click();
+       onlineBankingPage.AccountActivity.click();
 
     }
 
-    @Given("Account Activity page should have the title {string}")
-    public void account_Activity_page_should_have_the_title(String Zero_Account_Activity) {
+    @Given("page should have the title {string}")
+    public void page_should_have_the_title(String title) {
         String actual = Driver.getDriver().getTitle();
-        Assert.assertEquals(Zero_Account_Activity, actual);
+        Assert.assertEquals(title, actual);
     }
 
     @Given("In the Account drop down default option should be {string}.")
     public void in_the_Account_drop_down_default_option_should_be(String Savings) {
-        BrowserUtilities.waitForVisibility(dashboardMenuPage.Savings, 5);
-        Select ahmet = new Select(dashboardMenuPage.click_Account);
+        BrowserUtilities.waitForVisibility(accountActivityPage.Savings, 5);
+        Select ahmet = new Select(accountSummaryPage.click_Account);
         String actual = ahmet.getFirstSelectedOption().getText();
         Assert.assertEquals(Savings,actual);
 
@@ -39,13 +45,13 @@ public class AccountActivityStepDefs {
 
     @Then("Account drop down should have the following options: {string}, {string}, {string}, {string}, {string}")
     public void account_drop_down_should_have_the_following_options(String Savings, String Checking, String Loan, String Credit_Card, String Brokerage) {
-        BrowserUtilities.waitForVisibility(dashboardMenuPage.click_Account, 5);
-        dashboardMenuPage.click_Account.click();
+        BrowserUtilities.waitForVisibility(accountSummaryPage.click_Account, 5);
+        accountSummaryPage.click_Account.click();
 
         List<String> AccountNameList = new ArrayList<>(Arrays.asList(Savings,Checking,Loan,Credit_Card,Brokerage));
 
 
-        Select Dropdown = new Select(dashboardMenuPage.click_Account);
+        Select Dropdown = new Select(accountSummaryPage.click_Account);
         List<String> AccountList = new ArrayList<>();
         Dropdown.getOptions();
         for (WebElement a : Dropdown.getOptions()) {
@@ -84,23 +90,19 @@ public class AccountActivityStepDefs {
     @Then("Transactions table should have column names {string}, {string}, {string}, {string}")
     public void transactions_table_should_have_column_names(String Date, String Description, String Deposit, String Withdrawal) {
 
-        BrowserUtilities.waitForVisibility(dashboardMenuPage.Date, 5);
+        BrowserUtilities.waitForVisibility(accountActivityPage.Date, 5);
 
-        String actual = dashboardMenuPage.Date.getText();
-        String expected = Date;
-        Assert.assertEquals(expected, actual);
+        String actual = accountActivityPage.Date.getText();
+        Assert.assertEquals(Date, actual);
 
-        String actual2 = dashboardMenuPage.Description.getText();
-        String expected2 = Description;
-        Assert.assertEquals(expected2, actual2);
+        String actual2 = accountActivityPage.Description.getText();
+        Assert.assertEquals(Description, actual2);
 
-        String actual3 = dashboardMenuPage.Deposit.getText();
-        String expected3 = Deposit;
-        Assert.assertEquals(expected3, actual3);
+        String actual3 = accountActivityPage.Deposit.getText();
+        Assert.assertEquals(Deposit, actual3);
 
-        String actual4 = dashboardMenuPage.Withdrawal.getText();
-        String expected4 = Withdrawal;
-        Assert.assertEquals(expected4, actual4);
+        String actual4 = accountActivityPage.Withdrawal.getText();
+        Assert.assertEquals(Withdrawal, actual4);
 
 
     }

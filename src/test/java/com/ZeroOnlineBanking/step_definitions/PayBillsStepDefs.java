@@ -3,6 +3,7 @@ package com.ZeroOnlineBanking.step_definitions;
 import com.ZeroOnlineBanking.pages.OnlineBankingPage;
 import com.ZeroOnlineBanking.pages.PayBillsPage;
 import com.ZeroOnlineBanking.utilities.BrowserUtilities;
+import com.ZeroOnlineBanking.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
@@ -58,8 +59,12 @@ public class PayBillsStepDefs {
     @Then("I click the Pay button")
     public void i_click_the_Pay_button() {
         payBillsPage.ClickPay.click();
+        BrowserUtilities.wait(2);
 
     }
+
+
+
 
     @Then("I should be have this message {string}")
     public void i_should_be_have_this_message(String expectedMessage) {
@@ -67,15 +72,22 @@ public class PayBillsStepDefs {
             Assert.assertTrue("Alert Box is not displayed", payBillsPage.alertMessageBox.isDisplayed());
             String actualMessage = payBillsPage.alertMessageBox.getText();
             Assert.assertEquals("Alert Box Message does not match: " + actualMessage, expectedMessage, actualMessage);
-        } else {
-            if (payBillsPage.SelectAmount.getAttribute("value").isEmpty()) {
-                String actualValidationMessage = payBillsPage.SelectAmount.getAttribute("validationMessage");
-                Assert.assertEquals("Alert Box Message does not match",expectedMessage,actualValidationMessage);
-            } else {
-                String actualValidationMessage = payBillsPage.SelectDate.getAttribute("validationMessage");
-                Assert.assertEquals("Alert Box Message does not match",expectedMessage,actualValidationMessage);
-            }
+
+            System.out.println(actualMessage);
+            System.out.println(expectedMessage);
+            System.out.println(actualMessage);
+
+        } else{
+            String message = payBillsPage.SelectAmount.getAttribute("validationMessage");
+            System.out.println("message = " + message);
+            Assert.assertEquals(expectedMessage,message);
+
         }
+
+
+
+
+
     }
 
     }

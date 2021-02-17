@@ -15,6 +15,7 @@ Feature: Automating Pay Bills
     Then I click the Pay button
     And I should be have this message "The payment was successfully submitted."
 
+    @wip
   Scenario:As an authorized user I should NOT be able to pay
     Given I click the Pay Bills button
     Then page should have the title "Zero - Pay Bills"

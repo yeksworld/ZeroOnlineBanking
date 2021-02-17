@@ -9,10 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DashboardMenuPage {
-    public DashboardMenuPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
+public class DashboardMenuPage extends BasePage{
+
 
     @FindBy(xpath = "(//a[@class='dropdown-toggle'])[2]")
     public WebElement userProfile;

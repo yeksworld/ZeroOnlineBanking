@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.ZeroOnlineBanking.runners.CukesRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 12.56 s <<< FAILURE! - in com.ZeroOnlineBanking.runners.CukesRunner
+Account Summary(Automating Account Summary Page)  Time elapsed: 11.573 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Cash[hy] Accounts> but was:<Cash[] Accounts>
+
